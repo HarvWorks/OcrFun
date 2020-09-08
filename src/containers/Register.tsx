@@ -27,9 +27,6 @@ export default function Register() {
       [inputType]: text,
     }));
   };
-  const onSignInPress = () => {
-    console.log('sign in');
-  };
   const onRegisterPress = () => {
     console.log('Register');
   };
@@ -45,7 +42,6 @@ export default function Register() {
         placeholder={'password'}
         value={password}
       />
-      <TextButton text="Sign In" onPress={onSignInPress} />
       <TextButton text="Register" onPress={onRegisterPress} />
     </View>
   );

@@ -1,24 +1,31 @@
 import React, {useState} from 'react';
 import {View} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+
 import Input from '../components/common/Input';
 import TextButton from '../components/common/TextButton';
-
-const inputs = {
-  email: 'email',
-  password: 'password',
-};
+import {RootStackParamList} from '../navigators/rootNavigator';
 
 interface IState {
   email: string;
   password: string;
 }
 
+interface IProps {
+  navigation: StackNavigationProp<RootStackParamList, 'Login'>;
+}
+
+const inputs = {
+  email: 'email',
+  password: 'password',
+};
+
 const initialState: IState = {
   email: '',
   password: '',
 };
 
-export default function Login() {
+export default function Login({navigation}: IProps) {
   const [state, setState] = useState(initialState);
   const {email, password} = state;
   const textChange = (inputType: string) => (text: String) => {
@@ -28,10 +35,10 @@ export default function Login() {
     }));
   };
   const onSignInPress = () => {
-    console.log('sign in');
+    console.log('Login');
   };
   const onRegisterPress = () => {
-    console.log('Register');
+    navigation.navigate('Register');
   };
   return (
     <View>
@@ -45,7 +52,7 @@ export default function Login() {
         placeholder={'password'}
         value={password}
       />
-      <TextButton text="Sign In" onPress={onSignInPress} />
+      <TextButton text="Login" onPress={onSignInPress} />
       <TextButton text="Register" onPress={onRegisterPress} />
     </View>
   );
