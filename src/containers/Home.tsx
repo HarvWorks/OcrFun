@@ -21,7 +21,13 @@ const mapDispatchToProps = (dispatch: any) => ({
 
 const Home: FunctionComponent<IProps> = (props: IProps) => {
   const {value} = props;
-  return <Text>{value}</Text>;
+  console.log(HermesInternal);
+  return (
+    <>
+      <Text>{value}</Text>
+      {global.HermesInternal === null ? null : <Text>Engine: Hermes</Text>}
+    </>
+  );
 };
 
 Home.propTypes = {
